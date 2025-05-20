@@ -1,0 +1,146 @@
+/* Reset + base */
+body {
+  margin: 0;
+  font-family: 'Pacifico', cursive;
+  background-image: url('/assets/background.png');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  padding-top: 30px;
+  backdrop-filter: brightness(0.9);
+}
+
+/* Arène en fond semi-transparent */
+body::after {
+  content: "";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url('/assets/arene.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 600px;
+  height: 400px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+h1 {
+  font-size: 56px;
+  margin-bottom: 20px;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+  z-index: 2;
+  position: relative;
+}
+
+/* Conteneur piste */
+#raceTrack {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(255,45,85,0.5);
+  z-index: 2;
+  position: relative;
+}
+
+/* Piste de course */
+.slots {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.slot {
+  flex: 1;
+  height: 40px;
+  margin: 0 4px;
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 10px;
+  line-height: 40px;
+  font-weight: bold;
+  font-size: 16px;
+  border: 2px solid #ff2d55;
+  box-shadow: 0 0 8px rgba(255, 45, 85, 0.4);
+}
+
+/* Chevaux */
+#horses {
+  position: relative;
+  height: 100px;
+  margin-bottom: 20px;
+}
+.horse {
+  width: 60px;
+  height: 90px;
+  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: left 0.6s ease;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+/* Cartes */
+#cardRow {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-left: 40px; /* un peu de marge à gauche pour aligner avec la piste */
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  width: 80px;
+  height: 120px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  box-shadow: 0 0 15px rgba(255,255,255,0.4);
+  transition: transform 0.5s ease;
+}
+.face-down {
+  background-image: url('../assets/cartes/back_card.png');
+  background-size: cover;
+}
+
+/* Message + bouton */
+#message {
+  margin-top: 30px;
+  font-size: 22px;
+  z-index: 2;
+  position: relative;
+}
+
+/* Bouton principal */
+button, #startBtn {
+  padding: 15px 40px;
+  font-size: 24px;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(to right, #ff8c00, #ff2d55);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 25px rgba(255,45,85,0.7);
+  transition: all 0.3s ease;
+}
+button:hover, #startBtn:hover:not(:disabled) {
+  background: linear-gradient(to right, #ff2d55, #ff8c00);
+  transform: scale(1.05);
+}
+button:disabled {
+  background: gray;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}

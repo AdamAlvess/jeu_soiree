@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  font-family: 'Pacifico', cursive;
+  background-image: url('/assets/background.png');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding-top: 80px;
+  min-height: 100vh;
+  backdrop-filter: brightness(0.9);
+}
+
+h1 {
+  font-size: 60px;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+  margin-bottom: 40px;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.btn {
+  padding: 20px 50px;
+  font-size: 28px;
+  background: linear-gradient(to right, #ff8c00, #ff2d55);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255, 45, 85, 0.5);
+  transition: all 0.3s ease;
+  width: 300px;
+}
+
+.btn:hover {
+  background: linear-gradient(to right, #ff2d55, #ff8c00);
+  transform: scale(1.05);
+}
+
+.btn.disabled {
+  background: gray;
+  color: #ccc;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
