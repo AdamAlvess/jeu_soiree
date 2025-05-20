@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jeu Le Beagle - Drink'N'Play</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="Css/style_beagle.css" />
+</head>
+<body>
+  <h1>Jeu Le Beagle - Drink'N'Play</h1>
+
+  <section id="addPlayerSection">
+    <input type="text" id="playerNameInput" placeholder="Nom du joueur" />
+    <button id="addPlayerBtn">Ajouter</button>
+    <button id="startGameBtn" disabled>Jouer</button>
+  </section>
+
+  <ul id="playersList"></ul>
+
+  <div id="gameArea" style="display:none;">
+    <div id="circleDeck"></div>
+
+    <h2 id="currentPlayer"></h2>
+
+    <button id="drawCardBtn" class="btn">Tirer une carte</button>
+    <button id="nextPlayerBtn" class="btn" style="display:none;">Joueur suivant</button>
+    <button id="stopGameBtn" class="btn stop-btn">Arrêt du jeu</button>
+  </div>
+
+  <!-- Popup règle carte -->
+  <div id="rulePopup" class="popup-overlay" style="display:none;">
+    <div class="popup-content">
+      <h2 id="popupPlayerName"></h2>
+      <p id="popupRuleText"></p>
+      <button id="closePopupBtn" class="btn">OK</button>
+    </div>
+  </div>
+
+  <script src="Js/beagle.js"></script>
+</body>
+</html>

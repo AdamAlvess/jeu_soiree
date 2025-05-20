@@ -1,0 +1,213 @@
+/* Reset + base */
+body {
+  margin: 0;
+  font-family: 'Pacifico', cursive;
+  background-image: url('/assets/background.png');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  min-height: 100vh;
+  padding-top: 30px;
+  backdrop-filter: brightness(0.9);
+}
+
+/* Titre */
+h1 {
+  font-size: 56px;
+  margin-bottom: 20px;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+}
+
+/* Section ajout joueur */
+#addPlayerSection {
+  margin-bottom: 30px;
+}
+#playerNameInput {
+  font-size: 24px;
+  padding: 10px 15px;
+  border-radius: 30px;
+  border: none;
+  width: 250px;
+  max-width: 80vw;
+  outline: none;
+  text-align: center;
+  margin-right: 10px;
+}
+#addPlayerBtn, #startGameBtn {
+  font-size: 22px;
+  padding: 10px 30px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(to right, #ff8c00, #ff2d55);
+  color: white;
+  box-shadow: 0 0 20px rgba(255, 45, 85, 0.5);
+  transition: all 0.3s ease;
+}
+#addPlayerBtn:hover, #startGameBtn:hover:not(:disabled) {
+  background: linear-gradient(to right, #ff2d55, #ff8c00);
+  transform: scale(1.05);
+}
+#startGameBtn:disabled {
+  background: gray;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Liste des joueurs */
+#playersList {
+  list-style: none;
+  padding: 0;
+  margin: 10px auto 40px auto;
+  width: 300px;
+  max-width: 90vw;
+  text-align: left;
+  font-size: 22px;
+}
+#playersList li {
+  background: rgba(0,0,0,0.3);
+  margin-bottom: 8px;
+  padding: 8px 15px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 8px rgba(255, 45, 85, 0.4);
+}
+#playersList li button {
+  background: transparent;
+  border: none;
+  color: #ff2d55;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Zone de jeu */
+#gameArea {
+  max-width: 900px;
+  margin: 0 auto 40px auto;
+  background: rgba(0,0,0,0.5);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 30px rgba(255,45,85,0.6);
+  position: relative;
+}
+
+/* Cercle de cartes */
+#circleDeck {
+  width: 400px;
+  height: 400px;
+  transform: translateY(-30px);
+  margin: 0 auto 30px auto;
+  position: relative;
+  border-radius: 50%;
+}
+
+/* Carte en cercle */
+.card {
+  width: 50px;
+  height: 70px;
+  background: white;
+  color: #ff2d55;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 8px;
+  border: 2px solid #ff2d55;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center bottom;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+  user-select: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Boutons */
+.btn {
+  padding: 15px 40px;
+  font-size: 22px;
+  border-radius: 40px;
+  border: none;
+  background: linear-gradient(to right, #ff8c00, #ff2d55);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 25px rgba(255,45,85,0.7);
+  transition: all 0.3s ease;
+  margin: 10px 5px;
+}
+.btn:hover {
+  background: linear-gradient(to right, #ff2d55, #ff8c00);
+  transform: scale(1.05);
+}
+
+.stop-btn {
+  background: #555;
+  box-shadow: none;
+}
+.stop-btn:hover {
+  background: #777;
+}
+
+/* Current player */
+#currentPlayer {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+/* Popup overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.85);
+  color: white;
+  font-family: 'Pacifico', cursive;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  flex-direction: column;
+  text-align: center;
+}
+
+.popup-content {
+  background: linear-gradient(to right, #ff8c00, #ff2d55);
+  padding: 30px 50px;
+  border-radius: 20px;
+  width: 320px;
+  box-shadow: 0 0 30px rgba(255,45,85,0.7);
+}
+
+.popup-content button {
+  margin-top: 20px;
+  padding: 12px 40px;
+  font-size: 22px;
+  border-radius: 40px;
+  border: none;
+  background: white;
+  color: #ff2d55;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 0 15px rgba(255,45,85,0.9);
+  transition: transform 0.3s ease;
+}
+
+.popup-content button:hover {
+  transform: scale(1.1);
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
