@@ -13,6 +13,7 @@ let joueurSorti = new Set();
 let roundResults = [];
 let savedPlayers = [];
 let savedPerdant = null;
+let maxRollsForAllSet = false; // variable globale à ajouter en haut avec les autres
 
 // Références DOM fixes
 const playerNameInput = document.getElementById('playerNameInput');
@@ -153,6 +154,8 @@ function evalCombo(d) {
   return { name: "Rien", gorgées: 0, culSec: 0, sorti: false, text: "Rien" };
 }
 
+
+
 function validerTour() {
   rollBtn.disabled = true;
   validateBtn.style.display = 'none';
@@ -161,10 +164,12 @@ function validerTour() {
   const combo = evalCombo(diceValues);
   roundResults.push({ player: currentPlayer, combo, dices: [...diceValues] });
 
-  // Si on valide avant le 3e lancer, on réduit maxRollsForAll au nombre de lancers du joueur actuel
-  if (rollCount < maxRollsForAll) {
+  // Ne fixer la limite que si ce n'est pas encore fait ET si on est au premier joueur du tour
+  if (!maxRollsForAllSet) {
     maxRollsForAll = rollCount;
+    maxRollsForAllSet = true;
   }
+  // Pour les autres joueurs, on ne modifie pas maxRollsForAll
 
   if (combo.name === "Fiches" || combo.name === "Brelan" || combo.name === "Tierce") {
     gorgées[currentPlayer] += combo.gorgées;
@@ -200,13 +205,15 @@ function validerTour() {
     }
 
     roundResults = [];
-    // Reset maxRollsForAll à 3 au début d'un nouveau tour complet, si tu veux revenir à la norme :
+    // Reset maxRollsForAll à 3 au début d'un nouveau tour complet
     maxRollsForAll = 3;
+    maxRollsForAllSet = false; // réinitialisation de la variable pour le nouveau tour
   }
 
   nextPlayer();
   updateUIForNewTurn();
 }
+
 
 
 function nextPlayer() {
