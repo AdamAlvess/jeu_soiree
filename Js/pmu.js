@@ -14,9 +14,23 @@ let spotRevealed = Array(spotsCount).fill(false);
 let currentCardIndex = 0;
 let raceInterval = null;
 
-// Crée un élément pour la pile face cachée
-let deckElement;
+let deckElement;      // pile dos
+let lastCardElement;  // carte retournée visible (dernière tirée)
 
+// Création et ajout overlay victoire
+const overlay = document.createElement('div');
+overlay.id = 'winnerOverlay';
+overlay.style.display = 'none';
+overlay.innerHTML = `
+  <div class="overlay-content">
+    <h2 id="winnerMessage"></h2>
+    <button id="replayBtn">Rejouer</button>
+    <button id="menuBtn">Menu des jeux</button>
+  </div>
+`;
+document.body.appendChild(overlay);
+
+// Shuffle
 function shuffle(array) {
   for(let i = array.length -1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i+1));
@@ -40,28 +54,35 @@ function setupRace() {
   cardRow.innerHTML = '';
   currentCardIndex = 0;
   spotRevealed = Array(spotsCount).fill(false);
+  overlay.style.display = 'none'; // cacher overlay si visible
 
   horses = suits.map((suit, i) => {
     const el = document.createElement('div');
     el.className = 'horse';
     el.style.backgroundImage = `url('assets/cartes/as_${suit}.png')`;
-    el.style.top = `${i * 22}px`;
+    el.style.top = `${i * 40}px`; // augmenter espacement vertical
     el.style.left = `0px`;
     horsesContainer.appendChild(el);
     return { suit, position: 0, element: el };
   });
 
   deck = createDeck();
-
   spots = deck.splice(0, spotsCount);
 
-  // Afficher la pile (face dos) à gauche des spots
+  // Pile dos
   deckElement = document.createElement('div');
   deckElement.className = 'card face-down';
   deckElement.style.marginRight = '20px';
   cardRow.appendChild(deckElement);
 
-  // Afficher les spots alignés à côté de la pile
+  // Dernière carte tirée (visible)
+  lastCardElement = document.createElement('div');
+  lastCardElement.className = 'card';
+  lastCardElement.style.marginRight = '20px';
+  lastCardElement.style.backgroundImage = 'none';
+  cardRow.appendChild(lastCardElement);
+
+  // Spots face cachée
   for(let i=0; i < spotsCount; i++) {
     const cardEl = document.createElement('div');
     cardEl.className = 'card face-down';
@@ -87,13 +108,13 @@ function canRevealSpot(spotIndex) {
 
 function revealSpot(index) {
   if (spotRevealed[index]) return;
-  const cardEl = cardRow.children[index + 1]; // +1 car le 1er enfant est la pile dos
+  const cardEl = cardRow.children[index + 2]; // +2 car pile dos + lastCard visible
   const spot = spots[index];
   cardEl.classList.remove('face-down');
   cardEl.style.backgroundImage = `url('assets/cartes/${spot.value}_${spot.suit}.png')`;
   spotRevealed[index] = true;
 
-  // Recule l'AS de la couleur révélée d'1 case
+  // Recule l'AS correspondant d'1 case
   const horse = horses.find(h => h.suit === spot.suit);
   if (horse && horse.position > 0) {
     horse.position--;
@@ -105,13 +126,17 @@ function playStep() {
   if (currentCardIndex >= deck.length) {
     clearInterval(raceInterval);
     startBtn.disabled = false;
-    alert('Fin du deck, la course est terminée !');
+    // Ne plus utiliser alert, afficher overlay victoire plus bas
     return;
   }
 
   const card = deck[currentCardIndex];
 
-  // Avancer l'AS correspondant à la couleur tirée
+  // Afficher la carte tirée dans lastCardElement
+  lastCardElement.style.backgroundImage = `url('assets/cartes/${card.value}_${card.suit}.png')`;
+  lastCardElement.classList.remove('face-down');
+
+  // Avancer cheval correspondant
   const horse = horses.find(h => h.suit === card.suit);
   if (horse && horse.position < slotsCount - 1) {
     horse.position++;
@@ -119,13 +144,13 @@ function playStep() {
 
     if (horse.position >= slotsCount - 1) {
       clearInterval(raceInterval);
-      alert(`Le cheval ${horse.suit.toUpperCase()} a gagné !`);
-      startBtn.disabled = false;
+      // Faire avancer la carte gagnante puis afficher overlay
+      animateWinningHorse(horse);
       return;
     }
   }
 
-  // Dévoiler les spots si possible
+  // Révéler spots si possible
   for (let i = 0; i < spotsCount; i++) {
     if (!spotRevealed[i] && canRevealSpot(i)) {
       revealSpot(i);
@@ -135,11 +160,45 @@ function playStep() {
   currentCardIndex++;
 }
 
-function startRace() {
+function animateWinningHorse(horse) {
+  const trackWidth = horsesContainer.clientWidth || 800;
+  const step = trackWidth / (slotsCount - 1);
+  // Avance d’une case finale en animation
+  const finalPos = Math.min(horse.position + 1, slotsCount - 1);
+  let startLeft = horse.position * step;
+  let endLeft = finalPos * step;
+  
+  horse.position = finalPos;
+  horse.element.style.transition = 'left 1s ease';
+  horse.element.style.left = `${endLeft}px`;
+
+  // Après animation, afficher overlay
+  setTimeout(() => {
+    showWinnerOverlay(horse.suit);
+  }, 1100);
+}
+
+function showWinnerOverlay(suit) {
+  const winnerMessage = document.getElementById('winnerMessage');
+  winnerMessage.textContent = `L'as de ${suit.toUpperCase()} a gagné ! 🏆`;
+  overlay.style.display = 'flex';
+  startBtn.disabled = false;
+}
+
+startBtn.addEventListener('click', () => {
   setupRace();
   startBtn.disabled = true;
   raceInterval = setInterval(playStep, 1000);
-}
+});
 
-startBtn.addEventListener('click', startRace);
+// Boutons overlay
+document.body.addEventListener('click', (e) => {
+  if (e.target.id === 'replayBtn') {
+    window.location.href = 'pmu.html';
+  }
+  if (e.target.id === 'menuBtn') {
+    window.location.href = 'play.html';
+  }
+});
+
 setupRace();

@@ -144,3 +144,65 @@ button:disabled {
   box-shadow: none;
   transform: none;
 }
+
+#horses {
+  position: relative;
+  height: 180px; /* agrandi verticalement pour éviter chevauchement */
+  margin-bottom: 20px;
+}
+
+/* Overlay de fin */
+#winnerOverlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.85);
+  color: white;
+  font-family: 'Pacifico', cursive;
+  font-size: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  flex-direction: column;
+  text-align: center;
+}
+#winnerOverlay .overlay-content {
+  padding: 30px 60px;
+  border-radius: 20px;
+  width: 350px;
+  background: linear-gradient(to right, #ff8c00, #ff2d55);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 25px rgba(255,45,85,0.7);
+  transition: all 0.3s ease;
+}
+
+#winnerOverlay button {
+  margin-top: 20px;
+  margin-right: 10px;
+  padding: 15px 30px;
+  font-size: 22px;
+  border-radius: 40px;
+  border: none;
+  background: white;
+  color: #ff2d55;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 0 15px rgba(255,45,85,0.9);
+  transition: transform 0.3s ease;
+}
+
+#winnerOverlay button:hover {
+  transform: scale(1.1);
+}
+
+#cardRow {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-left: 40px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
