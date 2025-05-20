@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Autoroute - Drink'N'Play</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="Css/style_autoroute.css" />
+</head>
+<body>
+  <h1>Jeu de l'Autoroute</h1>
+
+  <div id="gameArea">
+  <div id="deckArea">
+    <div id="cardDeck">
+      <img src="assets/cartes/back_card.png" class="card-image" />
+    </div>
+    <button id="drawCardBtn" class="btn">Retourner une carte</button>
+  </div>
+
+  <div id="roadWrapper">
+    <div id="road">
+      <!-- 5 cartes apparaîtront ici -->
+    </div>
+    <div id="playerIcon">🚗</div>
+  </div>
+
+  <div class="controls">
+    <div id="resultButtons">
+      <button id="correctBtn" class="btn">Bonne réponse</button>
+      <button id="wrongBtn" class="btn">Mauvaise réponse</button>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Popup défaite / gorgées -->
+  <div id="failPopup" class="popup-overlay" style="display:none;">
+    <div class="popup-content">
+      <p id="failText"></p>
+      <button id="failOkBtn" class="btn">OK</button>
+    </div>
+  </div>
+
+  <!-- Popup victoire -->
+  <div id="winPopup" class="popup-overlay" style="display:none;">
+    <div class="popup-content">
+      <h2>Victoire ! 🎉</h2>
+      <button onclick="location.reload()" class="btn">Rejouer</button>
+      <button onclick="window.location.href='play.html'" class="btn">Menu des jeux</button>
+    </div>
+  </div>
+
+  <script src="Js/autoroute.js"></script>
+</body>
+</html>

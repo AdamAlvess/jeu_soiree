@@ -39,7 +39,7 @@ h1 {
   padding: 10px 30px;
   border-radius: 30px;
   border: none;
-  cursor: pointer;
+  cursor: pointer;  
   background: linear-gradient(to right, #ff8c00, #ff2d55);
   color: white;
   box-shadow: 0 0 20px rgba(255, 45, 85, 0.5);

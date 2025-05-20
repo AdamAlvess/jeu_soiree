@@ -1,6 +1,6 @@
 // Données règles pour chaque carte (valeur + règle)
 const cardRules = {
-  "A": "Cul sec ! 🥂",
+  "As": "Cul sec ! 🥂",
   "2": "Tu dois boire 2 gorgées.",
   "3": "Tu dois boire 3 gorgées.",
   "4": "Le dernier qui dit « For to the floor » avec le doigt vers le bas boit une gorgée.",
@@ -10,9 +10,9 @@ const cardRules = {
   "8": "Tu distribues 8 gorgées à répartir.",
   "9": "J'ai déjà ou j'ai jamais.",
   "10": "Maître du Freez : quand tu arrêtes de bouger, le dernier qui bouge boit.",
-  "J": "Un thème ! Le joueur qui bloque ou répète boit.",
-  "Q": "Tout le monde boit.",
-  "K": "Tu inventes une règle.",
+  "Valet": "Un thème ! Le joueur qui bloque ou répète boit.",
+  "Dame": "Tout le monde boit.",
+  "Roi": "Tu inventes une règle.",
 };
 
 // Correspondance symbole -> nom dossier pour les images
@@ -190,7 +190,7 @@ function showDrawnCard(card) {
 }
 
 // Fermer popup règle
-closePopupBtn.addEventListener("  ", () => {
+closePopupBtn.addEventListener("click", () => {
   rulePopup.style.display = "none";
 });
 
