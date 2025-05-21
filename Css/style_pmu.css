@@ -206,3 +206,56 @@ button:disabled {
   margin-left: auto;
   margin-right: auto;
 }
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  .slots {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .slot {
+    margin: 6px 0;
+    font-size: 14px;
+    height: 36px;
+  }
+
+  #horses {
+    height: 140px;
+  }
+
+  .horse {
+    width: 40px;
+    height: 60px;
+  }
+
+  #cardRow {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-left: 0;
+    gap: 8px;
+  }
+
+  .card {
+    width: 60px;
+    height: 90px;
+  }
+
+  button, #startBtn {
+    font-size: 18px;
+    padding: 12px 24px;
+  }
+
+  #winnerOverlay .overlay-content {
+    width: 90%;
+    padding: 20px;
+  }
+
+  #winnerOverlay button {
+    font-size: 18px;
+    padding: 12px 20px;
+  }
+}

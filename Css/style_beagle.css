@@ -211,3 +211,55 @@ h1 {
   object-fit: contain;
   border-radius: 8px;
 }
+@media (max-width: 768px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  #playerNameInput {
+    width: 80%;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  #addPlayerBtn, #startGameBtn {
+    font-size: 18px;
+    padding: 8px 20px;
+  }
+
+  #playersList {
+    width: 90%;
+    font-size: 18px;
+  }
+
+  #gameArea {
+    padding: 15px;
+  }
+
+  #circleDeck {
+    width: 250px;
+    height: 250px;
+    transform: none;
+  }
+
+  .card {
+    width: 40px;
+    height: 60px;
+    font-size: 16px;
+  }
+
+  .btn {
+    font-size: 18px;
+    padding: 10px 20px;
+  }
+
+  .popup-content {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .popup-content button {
+    font-size: 18px;
+    padding: 10px 20px;
+  }
+}

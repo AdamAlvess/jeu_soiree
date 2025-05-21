@@ -243,3 +243,56 @@ h1 {
   background: linear-gradient(to right, #ff2d55, #ff8c00);
   transform: scale(1.05);
 }
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  #playerNameInput {
+    font-size: 1.2rem;
+    padding: 0.6rem 1rem;
+    width: 80vw;
+    margin-bottom: 1rem;
+    margin-right: 0;
+  }
+
+  #addPlayerBtn, #startGameBtn, .btn, #rollBtn, #validateBtn {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.2rem;
+    width: min(90%, 280px);
+  }
+
+  #diceContainer {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .die {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+
+  #playersList {
+    font-size: 1rem;
+    width: 90vw;
+  }
+
+  #gameInfo, #counters {
+    font-size: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  #gameArea {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  body::after {
+    width: 80vw;
+    height: auto;
+    opacity: 0.2;
+  }
+}

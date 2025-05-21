@@ -185,3 +185,45 @@ background: linear-gradient(to right, #ff8c00, #ff2d55);
   border-radius: 10px;
   text-align: center;
 }
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  #gameArea {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  #deckArea {
+    gap: 10px;
+  }
+
+  #cardDeck {
+    width: 70px;
+    height: 100px;
+  }
+
+  #roadWrapper {
+    width: 90%;
+  }
+
+  #resultButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn {
+    font-size: 18px;
+    padding: 10px 24px;
+  }
+
+  .popup-content {
+    width: 90%;
+    padding: 20px;
+  }
+}

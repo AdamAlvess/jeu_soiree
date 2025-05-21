@@ -6,27 +6,28 @@ body {
   background-position: center;
   color: white;
   text-align: center;
-  padding-top: 80px;
+  padding-top: 5vh;
   min-height: 100vh;
   backdrop-filter: brightness(0.9);
 }
 
 h1 {
-  font-size: 60px;
+  font-size: clamp(2.5rem, 6vw, 4rem);
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
-  margin-bottom: 40px;
+  margin-bottom: 2rem;
 }
 
 .buttons-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1rem;
   align-items: center;
+  padding: 0 1rem;
 }
 
 .btn {
-  padding: 20px 50px;
-  font-size: 28px;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
   background: linear-gradient(to right, #ff8c00, #ff2d55);
   color: white;
   border: none;
@@ -34,7 +35,7 @@ h1 {
   cursor: pointer;
   box-shadow: 0 0 20px rgba(255, 45, 85, 0.5);
   transition: all 0.3s ease;
-  width: 300px;
+  width: min(90%, 300px);
 }
 
 .btn:hover {
