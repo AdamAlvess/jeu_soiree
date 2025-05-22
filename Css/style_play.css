@@ -35,7 +35,7 @@ h1 {
   cursor: pointer;
   box-shadow: 0 0 20px rgba(255, 45, 85, 0.5);
   transition: all 0.3s ease;
-  width: min(90%, 300px);
+  width: min(100%, 400px);
 }
 
 .btn:hover {
