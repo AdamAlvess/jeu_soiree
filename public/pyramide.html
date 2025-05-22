@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Pyramide - Drink'N'Play</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Css/style_pyramide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+  <h1>Jeu de la Pyramide</h1>
+
+  <section id="addPlayerSection">
+    <input type="text" id="playerNameInput" placeholder="Nom du joueur">
+    <button id="addPlayerBtn">Ajouter</button>
+    <button id="startGameBtn" disabled>Distribuer les cartes</button>
+  </section>
+
+  <ul id="playersList"></ul>
+
+  <div id="gameArea" style="display:none;">
+    <div id="playerCardsArea"></div>
+    <div id="transitionScreen">
+        <div id="transitionMessage">Cartes de <span id="playerNameDisplay"></span></div>
+        <div id="countdown">3</div>
+    </div>
+    <button class="btn" id="nextPlayerBtn" style="display:none;">Joueur suivant</button>
+
+    <div id="pyramid"></div>
+    <div id="currentCard"></div>
+    <div id="infoZone"></div>
+
+    <div class="controls">
+      <button class="btn" id="nextCardBtn">Suivant</button>
+      <button class="btn" id="accuseBtn">Menteur</button>
+    </div>
+
+    <div id="accusationArea" style="display:none;">
+      <h3>Qui a menti ?</h3>
+      <form id="accusationForm"></form>
+      <button class="btn" id="validateAccuse">Valider</button>
+    </div>
+
+    <div id="revealArea" style="display:none;"></div>
+    <div id="message"></div>
+
+    <div id="endButtons" style="display:none;">
+      <button class="btn" id="restartBtn">Relancer une partie</button>
+      <button class="btn" id="menuBtn" onclick="location.href='play.html'">Retour menu</button>
+    </div>
+  </div>
+  
+  <!-- Popup personnalisé -->
+  <div id="rulePopup" class="popup-overlay" style="display:none;">
+  <div class="popup-content">
+      <h2 id="popupPlayerName"></h2>
+      <p id="popupRuleText"></p>
+      <button id="closePopupBtn" class="btn">OK</button>
+  </div>
+  </div>
+
+  <script src="Js/pyramide.js"></script>
+</body>
+</html>
